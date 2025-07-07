@@ -11,8 +11,8 @@ docker-compose up
 ```
 
 ## Envs
-AUCTION_INTERVAL (Define o tempo de fechamento do leilão)
-MONGODB_URL      (Url do MongoDB)
+- AUCTION_INTERVAL (Define o tempo de fechamento do leilão)
+- MONGODB_URL      (Url do MongoDB)
 
 
 ## Como testar o projeto
