@@ -4,7 +4,6 @@ import (
 	"context"
 	"fullcycle-auction_go/configuration/database/mongodb"
 	"fullcycle-auction_go/internal/entity/auction_entity"
-	"log"
 	"testing"
 	"time"
 
@@ -40,15 +39,9 @@ func TestSuite(t *testing.T) {
 
 func (suite *CreateAuctionTestSuite) TestCreateAuction_UpdateStatusCompleted() {
 
-	databaseConnection, err := mongodb.NewMongoDBConnection(suite.ctx)
-	if err != nil {
-		log.Fatal(err.Error())
-		return
-	}
-
 	auctionEntity, _ := auction_entity.CreateAuction("Camaro", "Carro esportivo", "Camaro Amarelo", 2);
 
-	auctionRepository := NewAuctionRepository(databaseConnection)
+	auctionRepository := NewAuctionRepository(suite.databaseConnection)
 	auctionRepository.CreateAuction(suite.ctx, auctionEntity)
 
 	auctionEntityActive, _ := auctionRepository.FindAuctionById(suite.ctx, auctionEntity.Id);
